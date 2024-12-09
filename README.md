@@ -13,7 +13,7 @@ This project demonstrates how to perform music genre classification using a **Co
   - [Classification of New Tracks](#predicting-new-tracks)
 - [Model Architecture](#model-architecture)
 - [Results](#results)
-- [License](#license)
+- [Original Study](#original-study)
 
 ## Introduction
 
@@ -109,3 +109,6 @@ This deep learning architecture consists of:
 2. Long-Short-Term-Memory Layers (LSTM):
     * These layers capture temporal dependencies in the audio data, which will be useful in capturing the sequential nature of the music.
 
+## Original Study
+A link to the original study that detailed this architecture and method can be found here:
+https://ieeexplore.ieee.org/document/9997961
