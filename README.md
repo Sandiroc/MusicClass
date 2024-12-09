@@ -59,7 +59,7 @@ Primarily, ensure that Keras, TensorFlow, Scikit-Learn, and MatPlotLib are insta
 The GTZAN dataset was obtained from this link:
 https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification?resource=download.
 
-Navigate to the root directory of this project and run this command:
+Navigate to the root directory of this repository and run this command:
 ```bash
 mkdir data
 ```
