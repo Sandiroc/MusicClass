@@ -9,6 +9,7 @@ import argparse
 import matplotlib.pyplot as plt
 import seaborn as sns
 from tensorflow.keras.models import load_model
+from sklearn.metrics import accuracy_score, confusion_matrix
 from scripts import train_cnn_lstm
 
 # Define file paths
@@ -76,8 +77,9 @@ def plot_confusion_matrix(model, save_figures=False):
     y_pred = model.predict(X_test)
     y_pred_classes = np.argmax(y_pred, axis=1)
 
-    # Generate confusion matrix
-    from sklearn.metrics import confusion_matrix
+    test_accuracy = accuracy_score(y_test, y_pred_classes)
+    print(f"Test Accuracy: {test_accuracy:.4%}")
+    
     cm = confusion_matrix(y_test, y_pred_classes)
 
     # Plot confusion matrix
@@ -88,6 +90,7 @@ def plot_confusion_matrix(model, save_figures=False):
     plt.xlabel('Predicted Genre')
     plt.ylabel('True Genre')
     plt.xticks(rotation=45)
+
 
     # Save or show the figure
     if save_figures:
@@ -123,9 +126,10 @@ if __name__ == '__main__':
                                        epochs=250, batch_size=8, model_save_path=MODEL_PATH, history_save_path=HISTORY_PATH)
         print("Model retrained and saved.")
     else:
-        print("Loading pre-trained model and history...")
+        print("Loading pre-trained model and history")
         model = load_model(MODEL_PATH)
         history = np.load(HISTORY_PATH, allow_pickle=True).item()
+
 
     # Plot metrics and confusion matrix
     plot_metrics(history, save_figures=args.save)
