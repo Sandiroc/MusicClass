@@ -26,6 +26,7 @@ def train_cnn_lstm_model(input_shape, output_shape, X_train_file, y_train_file, 
     # Initialize the model with the input shape
     model = cnn_lstm(input_shape, output_shape)
 
+    # early termination if val loss is increasing to avoid overfitting
     early_stopping = EarlyStopping(monitor='val_loss', patience=20, restore_best_weights=True)
 
     # Train the model with early stopping

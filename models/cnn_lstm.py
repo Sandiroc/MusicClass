@@ -17,7 +17,7 @@ def cnn_lstm(input_shape, output_shape):
         model: Compiled CNN-LSTM model
     """
     model = Sequential([
-        # 32 filters, each filter has size 3x3, use relu activation, variable input tensor shape
+        # 16 filters, each filter has size 3x3, use relu activation, variable input tensor shape
         tf_layers.Conv2D(16, kernel_size=(3, 3), activation='relu', padding='same', input_shape=input_shape),
         # reduce dimension of data by taking max of each 2x2 block in tensor
         tf_layers.MaxPooling2D(pool_size=(2, 2)),
