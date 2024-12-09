@@ -53,7 +53,7 @@ cd MusicClass
 ```bash
 pip install -r requirements.txt
 ```
-Primarily, ensure that Keras, TensorFlow, Scikit-Learn, and MatPlotLib are installed.
+Make sure that Keras, TensorFlow, Scikit-Learn, and MatPlotLib are installed.
 
 ### Configure Data
 The GTZAN dataset was obtained from this link:
