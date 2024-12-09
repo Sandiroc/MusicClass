@@ -4,22 +4,22 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix, accuracy_score
 from tensorflow.keras.models import load_model
 
-# File paths for model and history
+# file paths for model and history
 model_save_path = 'models/cnn_lstm_model.h5'
 history_save_path = 'models/cnn_lstm_history.npy'
 
-# File paths for test data
+# file paths for test data
 X_test_file = 'data/processed/X_test.npy'
 y_test_file = 'data/processed/y_test.npy'
 
-# Load the trained model and history
+# load the trained model and history
 model = load_model(model_save_path)
 history = np.load(history_save_path, allow_pickle=True).item()  # Load the training history
 
-# Plot training and validation accuracy/loss
+# plot training and validation accuracy/loss
 epochs_trained = len(history['accuracy'])  # Number of epochs trained
 
-# Create a figure with two subplots
+# two subplots
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
 # Accuracy vs Epochs
@@ -40,34 +40,31 @@ ax2.set_ylabel('Loss')
 ax2.legend()
 ax2.grid(True)
 
-# Adjust layout to prevent overlap
 plt.tight_layout()
-
-# Show the plots
 plt.show()
 
-# Load the test data
+# load the test data
 X_test = np.load(X_test_file)
 y_test = np.load(y_test_file)
 
-# Reshape data to add a channel dimension for CNN
+# reshape data to add a channel dimension for convolutional layers
 X_test = X_test[..., np.newaxis]
 
-# Make predictions on the test data
+# find y-hat
 y_pred = model.predict(X_test)
 y_pred_classes = np.argmax(y_pred, axis=1)
 
 test_accuracy = accuracy_score(y_test, y_pred_classes)
 print(f"Test Accuracy: {test_accuracy:.2%}")
 
-# Generate the confusion matrix
+# generate confusion matrix with sklearn
 cm = confusion_matrix(y_test, y_pred_classes)
 
-# Define the genre labels
+# define the genre labels
 genre_labels = ['Blues', 'Classical', 'Country', 'Disco', 'Hiphop', 
                 'Jazz', 'Metal', 'Pop', 'Reggae', 'Rock']
 
-# Plot the confusion matrix
+# plot the confusion matrix
 plt.figure(figsize=(10, 8))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
             xticklabels=genre_labels, yticklabels=genre_labels, cbar=True)

@@ -10,7 +10,7 @@ from models import cnn_lstm  # Assuming the model definition is in cnn_lstm.py
 def train_cnn_lstm_model(input_shape, output_shape, X_train_file, y_train_file, X_val_file, y_val_file,
                          epochs=250, batch_size=32, model_save_path='models/cnn_lstm_model.h5', history_save_path='models/cnn_lstm_history.npy'):
     """
-    Trains a CNN-LSTM model on the provided training data and saves the trained model and history.
+    Trains a CNN-LSTM model on the MFCC feature training data and saves the trained model and history.
     """
 
     # Load preprocessed data
