@@ -120,11 +120,16 @@ if __name__ == '__main__':
         # train model and save
         history = train_cnn_lstm.train_cnn_lstm_model(input_shape, output_shape, X_train_file, y_train_file, X_val_file, y_val_file,
                                        epochs=250, batch_size=8, model_save_path=MODEL_PATH, history_save_path=HISTORY_PATH)
+        
+        #history = train_cnn_lstm.train_cnn_lstm_model(input_shape, output_shape, X_train_file, y_train_file, X_val_file, y_val_file,
+        #                               epochs=250, batch_size=8, model_save_path='data/cnn_lstm_250_epoch.h5', history_save_path='models/cnn_lstm_250_epoch_history.npy')
         print("Model retrained and saved.")
     else:
         print("Loading pre-trained model and history")
         model = load_model(MODEL_PATH)
         history = np.load(HISTORY_PATH, allow_pickle=True).item()
+        #model = load_model('data/cnn_lstm_250_epoch.h5')
+        #history = np.load('models/cnn_lstm_250_epoch_history.npy', allow_pickle=True).item()
 
 
     # plot metrics and confusion matrix
