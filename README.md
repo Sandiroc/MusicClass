@@ -1,5 +1,7 @@
 # Music Genre Classification with CNN-LSTM
 
+### Sandilya Bhamidipati
+
 This project demonstrates how to perform music genre classification using a **Convolutional Neural Network (CNN)** combined with **Long Short-Term Memory (LSTM)** layers. The model is trained on the **GTZAN dataset**, a popular benchmark dataset for music genre classification tasks.
 
 ## Table of Contents
